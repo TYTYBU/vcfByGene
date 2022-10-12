@@ -1,7 +1,7 @@
 #!/bin/bash -l
 BED_PATH='selected_genes_bed'
 BED_PATH_LOCAL='temp' # need to be the same as the mane_bed.tar.gz extraction folder
-VCF_OUT_PATH='vcf_out_selected_genes'
+VCF_OUT_PATH='selected_genes_vcf_out'
 VCF_PATH="Bulk/Exome\ sequences/Population\ level\ exome\ OQFE\ variants,\ pVCF\ format\ -\ final\ release"
 dx mkdir -p $BED_PATH
 dx mkdir -p $VCF_OUT_PATH
