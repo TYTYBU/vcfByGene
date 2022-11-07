@@ -49,7 +49,8 @@ while (my $line = <IN>){
 
         open OUT, ">", $out_path . "/" . $chr2 . "_" . $blk . "_" . $gene_symbol . ".bed";
         foreach my $i (0 .. (scalar(@block_size)-1)){
-          print OUT $chr . "\t" . ($gene_start+$block_start[$i]) . "\t" . ($gene_start+$block_start[$i]+$block_size[$i]) . "\t" . $gene_symbol . "\n";
+          # 5nt flaking regions to include spicing sites for each exon
+          print OUT $chr . "\t" . ($gene_start+$block_start[$i]-5) . "\t" . ($gene_start+$block_start[$i]+$block_size[$i]+5) . "\t" . $gene_symbol . "\n";
         }
         close OUT;
 
