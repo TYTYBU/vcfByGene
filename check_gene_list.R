@@ -1,3 +1,4 @@
+setwd("./vcfByGene")
 library(openxlsx)
 library(tidyverse)
 
@@ -33,3 +34,7 @@ df = data.frame(gene_name = temp$Gene, gene_name2 = NA, bed_source = "MANE")
 ind = which(df$gene_name %in% mane$V19)
 temp = df$gene_name[ind]
 write.table(temp, "resources/genes_on_MANE_Artur.txt", quote = F, row.names = F, col.names = F)
+temp = df$gene_name[-ind]
+write.table(temp, "resources/genes_not_on_MANE_Artur.txt", quote = F, row.names = F, col.names = F)
+
+
