@@ -50,7 +50,8 @@ while (my $line = <IN>){
 
         open OUT, ">", $out_path . "/" . $chr2 . "_" . $blk . "_" . $gene_symbol . "_" . $gene_id . ".bed";
         foreach my $i (0 .. (scalar(@exonStart)-1)){
-          print OUT $chr . "\t" . $exonStart[$i] . "\t" . $exonEnd[$i] . "\t" . $gene_symbol . "\n";
+          # 5nt flaking regions to include spicing sites for each exon
+          print OUT $chr . "\t" . $exonStart[$i]-5 . "\t" . $exonEnd[$i]+5 . "\t" . $gene_symbol . "\n";
         }
         close OUT;
 
