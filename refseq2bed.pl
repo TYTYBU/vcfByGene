@@ -42,7 +42,7 @@ while (my $line = <IN>){
     $chr2 = "c" . $chr2;
 
     foreach my $blk (keys %{$hash{$chr2}}){
-      if ((($hash{$chr2}{$blk}{start} < $txEnd) and ($hash{$chr2}{$blk}{end} > $txEnd)) or (($hash{$chr2}{$blk}{start} < $txStart) and ($hash{$chr2}{$blk}{end} > $txStart))){
+      if ((($hash{$chr2}{$blk}{start} < $txEnd) and ($hash{$chr2}{$blk}{end} > $txEnd)) or (($hash{$chr2}{$blk}{start} < $txStart) and ($hash{$chr2}{$blk}{end} > $txStart)) or (($hash{$chr2}{$blk}{start} > $gene_start) and ($hash{$chr2}{$blk}{end} < $gene_end))){
         $exonStart_str = substr $exonStart_str, 0, -1;
         @exonStart = split /,/, $exonStart_str;
         $exonEnd_str = substr $exonEnd_str, 0, -1;

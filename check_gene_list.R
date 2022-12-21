@@ -21,10 +21,20 @@ ind = which(df$gene_name %in% c("AKAP2", "HIST1H1C", "C10orf113", "ACPP"))
 df$gene_name2[ind] = c("PALM2AKAP2", "H1-2", "NEBL", "ACP3")
 df$bed_source[ind] = "MANE"
 
+# make final list of genes on MANE
 temp = df$gene_name
 temp[ind] = c("PALM2AKAP2", "H1-2", "NEBL", "ACP3")
-write.table(temp, "genes_on_MANE.txt", quote = F, row.names = F, col.names = F)
-write.xlsx(df, file = "selected_gene_summary.xlsx")
+write.table(temp, "./resources/genes_on_MANE.txt", quote = F, row.names = F, col.names = F)
+
+# gene not found on MANE and don't have alt names -> BED source from RefSeq
+ind = which(is.na(df$bed_source))
+df$bed_source[ind] = "RefSeq"
+write.xlsx(df, file = "./resources/selected_gene_summary.xlsx")
+
+# make final list of genes not on MANE
+temp = df$gene_name[ind]
+write.table(temp, "./resources/genes_not_on_MANE.txt", quote = F, row.names = F, col.names = F)
+
 
 
 # gene list from Artur
